@@ -1,0 +1,6 @@
+ion: v1
+kind: Namespace
+metadata:
+  name: checkout
+  annotations:
+    configmanagement.gke.io/cluster-selector: selector-env-cluster1

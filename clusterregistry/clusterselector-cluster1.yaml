@@ -1,0 +1,9 @@
+kind: ClusterSelector
+apiVersion: configmanagement.gke.io/v1
+metadata:
+  name: selector-env-cluster1
+spec:
+  selector:
+    matchLabels:
+      env: cluster1
+      lifecycle: prod

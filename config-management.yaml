@@ -1,0 +1,15 @@
+apiVersion: configmanagement.gke.io/v1
+kind: ConfigManagement
+metadata:
+  name: config-management
+  namespace: config-management-system
+spec:
+  clusterName: hpegke2020
+  git:
+    syncRepo: https://github.com/manikanth-k/config-repo.git
+    syncBranch: master
+    secretType: none
+    policyDir: "."
+    syncWait: 2
+  enableAggregateNamespaceQuotas: true
+  enableHierarchicalResourceQuotas: true
