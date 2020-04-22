@@ -1,0 +1,61 @@
+apiVersion: cluster.k8s.io/v1alpha1
+kind: MachineDeployment
+metadata:
+  annotations:
+    machinedeployment.clusters.k8s.io/revision: "1"
+    onprem.gke.io/provider: vsphere
+    configmanagement.gke.io/cluster-selector: selector-env-cluster1 
+  labels:
+    kubernetes.googleapis.com/cluster-name: cluster1
+    kubernetes.googleapis.com/cluster-namespace: default
+    set: node
+  name: cluster1
+  namespace: default
+spec:
+  minReadySeconds: 0
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      kubernetes.googleapis.com/cluster-name: cluster1
+      kubernetes.googleapis.com/cluster-namespace: default
+      set: node
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        onprem.gke.io/provider: vsphere
+      labels:
+        kubernetes.googleapis.com/cluster-name: cluster1
+        kubernetes.googleapis.com/cluster-namespace: default
+        set: node
+    spec:
+      metadata:
+      providerSpec:
+        value:
+          apiVersion: vsphereproviderconfig.k8s.io/v1alpha1
+          kind: VsphereMachineProviderConfig
+          machineVariables:
+            datacenter: Anthos1.2_DC
+            datastore: Anthos1.2_Datastore
+            disk_label: disk0
+            disk_size: "40"
+            memory: "8192"
+            network: VLAN_2626
+            num_cpus: "4"
+            resource_pool: Anthos1.2_Cluster/Resources/Anthos1.2_Rp
+            vm_template: gke-on-prem-osimage-1.15.7-gke.32-20200309-fcfa750715
+          networkSpec:
+            address: null
+            dns: null
+            ntp: ""
+            useIPAM: true
+          vsphereMachine: standard-node
+      versions:
+        kubelet: 1.15.7-gke.32
+

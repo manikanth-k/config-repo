@@ -5,5 +5,4 @@ metadata:
 spec:
   selector:
     matchLabels:
-      env: cluster1
-      lifecycle: prod
+      env: gop
