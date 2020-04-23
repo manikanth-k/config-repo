@@ -14,7 +14,7 @@ metadata:
 spec:
   minReadySeconds: 0
   progressDeadlineSeconds: 600
-  replicas: 4
+  replicas: 5
   revisionHistoryLimit: 1
   selector:
     matchLabels:
@@ -45,7 +45,7 @@ spec:
             datastore: Anthos1.2_Datastore
             disk_label: disk0
             disk_size: "40"
-            memory: "9000"
+            memory: "8192"
             network: VLAN_2626
             num_cpus: "4"
             resource_pool: Anthos1.2_Cluster/Resources/Anthos1.2_Rp
