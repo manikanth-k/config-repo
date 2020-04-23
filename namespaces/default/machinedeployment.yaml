@@ -47,7 +47,7 @@ spec:
             disk_size: "40"
             memory: "8192"
             network: VLAN_2626
-            num_cpus: "4"
+            num_cpus: "5"
             resource_pool: Anthos1.2_Cluster/Resources/Anthos1.2_Rp
             vm_template: gke-on-prem-osimage-1.15.7-gke.32-20200309-fcfa750715
           networkSpec:
